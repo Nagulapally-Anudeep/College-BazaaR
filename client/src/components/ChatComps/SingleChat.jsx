@@ -10,6 +10,7 @@ import Lottie from "react-lottie";
 import animationData from "../../animations/typing.json";
 import "./styles.css";
 
+// modify this for running locally (backend endpoint)
 const ENDPOINT = "https://anudeep-nagulapally-college-bazaar.up.railway.app/";
 var socket, selectedChatCompare;
 
