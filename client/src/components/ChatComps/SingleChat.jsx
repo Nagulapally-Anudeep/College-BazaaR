@@ -69,7 +69,7 @@ const SingleChat = () => {
     if (event.key === "Enter" && newMessage) {
       socket.emit("stop typing", selectedChat._id);
       const data = await dispatch(sendMessage(newMessage, selectedChat._id));
-      console.log(data);
+      // console.log(data);
       setNewMessage("");
       socket.emit("new message", data);
     }

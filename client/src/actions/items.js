@@ -41,7 +41,7 @@ export const getItemsBySearch = (searchQuery) => async (dispatch) => {
 export const createItem = (item, navigate) => async (dispatch) => {
   try {
     const { data } = await api.createItem(item);
-    console.log(data);
+    // console.log(data);
     navigate(`/items/${data._id}`);
   } catch (err) {
     console.log(err);

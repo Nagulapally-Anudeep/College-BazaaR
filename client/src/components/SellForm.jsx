@@ -29,7 +29,7 @@ const SellForm = ({ setOpen, currentItemId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(itemData);
+    // console.log(itemData);
     setOpen(false);
     if (currentItemId) {
       dispatch(updateItem(currentItemId, itemData));
