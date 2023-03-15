@@ -10,7 +10,7 @@ import Lottie from "react-lottie";
 import animationData from "../../animations/typing.json";
 import "./styles.css";
 
-const ENDPOINT = "http://localhost:8000";
+const ENDPOINT = "https://anudeep-nagulapally-college-bazaar.up.railway.app/";
 var socket, selectedChatCompare;
 
 const SingleChat = () => {
