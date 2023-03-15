@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AccountMenu from "../components/AccountMenu";
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import MyChats from "../components/ChatComps/MyChats";
 import ChatBox from "../components/ChatComps/ChatBox";
 import { getMyChats } from "../actions/chat";
@@ -11,8 +11,10 @@ const Chats = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMyChats());
-  }, [dispatch]);
+    if (user) {
+      dispatch(getMyChats());
+    }
+  }, [dispatch, user]);
 
   return (
     <>
@@ -27,6 +29,11 @@ const Chats = () => {
         >
           {user && <MyChats />}
           {user && <ChatBox />}
+          {!user && (
+            <Text fontFamily="Work sans" fontSize="40px">
+              Login to access the chat
+            </Text>
+          )}
         </Box>
       </div>
     </>

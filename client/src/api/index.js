@@ -33,3 +33,10 @@ export const getItemsBySearch = (query) =>
   API.get(`/api/items/search?searchQuery=${query}`);
 
 export const getMyChats = () => API.get("/api/chats/");
+
+export const accessChat = (userId) => API.post("/api/chats/", { userId });
+
+export const sendMessage = (content, chatId) =>
+  API.post("/api/messages", { content, chatId });
+
+export const fetchMessages = (chatId) => API.get(`/api/messages/${chatId}`);

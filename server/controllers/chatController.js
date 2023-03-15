@@ -4,6 +4,8 @@ const User = require("../models/userModel");
 exports.accessChat = async (req, res, next) => {
   const { userId } = req.body;
 
+  //   console.log(req.body);
+
   if (!userId) {
     return res
       .status(400)
@@ -21,7 +23,7 @@ exports.accessChat = async (req, res, next) => {
 
   isChat = await User.populate(isChat, {
     path: "latestMessage.sender",
-    select: "name profilePic email",
+    select: "-password -postedItems -favouriteItems",
   });
 
   if (isChat.length > 0) {
@@ -58,7 +60,7 @@ exports.fetchChats = async (req, res, next) => {
 
     allUserChats = await User.populate(allUserChats, {
       path: "latestMessage.sender",
-      select: "name profilePic email",
+      select: "-password -postedItems -favouriteItems",
     });
 
     res.status(200).json(allUserChats);

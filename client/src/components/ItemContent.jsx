@@ -18,6 +18,7 @@ import SellForm from "./SellForm";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteItem } from "../actions/items";
 import { useNavigate } from "react-router-dom";
+import { accessChat } from "../actions/chat";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "#fff",
@@ -58,6 +59,12 @@ export default function ItemContent({ item }) {
 
   const handleDelete = () => {
     dispatch(deleteItem(item._id, navigate));
+  };
+
+  const handleChatWithUser = () => {
+    // console.log(item.seller._id);
+    dispatch(accessChat(item.seller._id));
+    navigate("/chat");
   };
 
   return (
@@ -139,6 +146,7 @@ export default function ItemContent({ item }) {
                     disabled={
                       !currentUser || currentUser?._id === item?.seller._id
                     }
+                    onClick={handleChatWithUser}
                   >
                     <ChatIcon sx={{ mr: 1 }} />
                     Chat with seller
