@@ -10,6 +10,7 @@ const userRouter = require("./routes/userRoutes");
 const itemRouter = require("./routes/itemRoutes");
 const chatRouter = require("./routes/chatRoutes");
 const messageRouter = require("./routes/messageRoutes");
+const path = require("path");
 
 const app = express();
 dotenv.config();
@@ -63,6 +64,23 @@ const connect = () => {
 };
 
 const PORT = process.env.PORT || 8000;
+
+// DEPLOYMENT
+
+const __dirname1 = path.resolve();
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname1, "/client/build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname1, "client", "build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running successfully");
+  });
+}
+
+// DEPLOYMENT
 
 const server = app.listen(PORT, () => {
   connect();
