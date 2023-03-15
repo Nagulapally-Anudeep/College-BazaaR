@@ -1,8 +1,9 @@
 import axios from "axios";
 
+// If build was not there
 // const API = axios.create({ baseURL: "http://localhost:8000" });
 
-// For deployment
+// For deployment purpose
 const API = axios.create();
 
 API.interceptors.request.use((req) => {
