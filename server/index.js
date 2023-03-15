@@ -68,9 +68,10 @@ const PORT = process.env.PORT || 8000;
 // DEPLOYMENT
 
 const __dirname1 = path.resolve();
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "PROD") {
   app.use(express.static(path.join(__dirname1, "/client/build")));
 
+  // SERVING THE REACT BUILD FILE
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname1, "client", "build", "index.html"));
   });
